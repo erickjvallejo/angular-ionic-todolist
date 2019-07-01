@@ -1,0 +1,7 @@
+{
+  "appId": "com.erickjvallejo.todo",
+  "appName": "todo",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
