@@ -30,6 +30,10 @@ export class DeseosService {
     return this.listas.find(listaData => listaData.id === id);
   }
 
+  obtenerNumeroDePendienteLista(lista: Lista) {
+    return  lista.items.filter( data => data.completado === true).length;
+  }
+
   guardarStorage() {
     localStorage.setItem("data", JSON.stringify(this.listas));
   }

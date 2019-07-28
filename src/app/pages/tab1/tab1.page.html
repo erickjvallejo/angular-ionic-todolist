@@ -1,13 +1,13 @@
 <ion-header no-border>
   <ion-toolbar color="dark">
     <ion-title>
-      Mis Pendientes
+      My Pending Tasks!!!
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="dark">
-  
+<ion-content color="dark" fullscreen>
+
   <app-listas [terminada] = "false"></app-listas> 
   
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
@@ -15,5 +15,5 @@
       (click)="agregarLista()">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
-    </ion-fab>
+  </ion-fab>
 </ion-content>
