@@ -1,12 +1,12 @@
-import { Component , OnInit, OnDestroy, AfterViewInit} from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from "@angular/core";
 
-import { Platform , AlertController  } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Platform, AlertController } from "@ionic/angular";
+import { SplashScreen } from "@ionic-native/splash-screen/ngx";
+import { StatusBar } from "@ionic-native/status-bar/ngx";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html'
+  selector: "app-root",
+  templateUrl: "app.component.html"
 })
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   backButtonSubscription;
@@ -23,47 +23,41 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      
       this.statusBar.styleDefault();
-      
-      // let status bar overlay webview
-      this.statusBar.overlaysWebView(true);
-
-      // set status bar to white
-      this.statusBar.backgroundColorByHexString('#ffffff');
-      
       this.splashScreen.hide();
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   ngAfterViewInit() {
-    this.platform.backButton.subscribe();
+    //this.platform.backButton.subscribe();
+
     this.backButtonSubscription = this.platform.backButton.subscribe(() => {
-     this.presentAlertConfirm();
+      this.presentAlertConfirm();
     });
-   }
-  ngOnDestroy() { 
+  }
+  ngOnDestroy() {
     this.backButtonSubscription.unsubscribe();
   }
 
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
-      header: 'Exit?',
-      message: 'Hi, do you want to <strong>exit</strong>?',
+      header: "Exit?",
+      message: "Hi, do you want to <strong>exit</strong>?",
       buttons: [
         {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Cancel');
+          text: "Cancel",
+          role: "cancel",
+          cssClass: "secondary",
+          handler: blah => {
+            console.log("Canceled");
           }
-        }, {
-          text: 'Okay',
+        },
+        {
+          text: "Okay",
           handler: () => {
-            navigator['app'].exitApp();
+            navigator["app"].exitApp();
           }
         }
       ]
@@ -71,6 +65,4 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
     await alert.present();
   }
-
-
 }
